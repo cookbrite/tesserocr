@@ -299,7 +299,7 @@ cdef unicode _free_str(char *text):
 cdef bytes _image_buffer(image):
     """Return raw bytes of a PIL Image"""
     with closing(BytesIO()) as f:
-        image.save(f, image.format or 'JPEG')
+        image.save(f, image.format or 'PNG')
         return f.getvalue()
 
 
@@ -313,8 +313,8 @@ cdef _pix_to_image(Pix *pix):
     if fmt > 0:
         result = pixWriteMem(&buff, &size, pix, fmt)
     else:
-        # write as JPEG if format is unknown
-        result = pixWriteMemJpeg(&buff, &size, pix, 0, 0)
+        # write as PNG if format is unknown
+        result = pixWriteMemPng(&buff, &size, pix, 0.0)
 
     if result == 1:
         raise RuntimeError("Failed to convert pix image to PIL.Image")
