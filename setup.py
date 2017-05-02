@@ -133,7 +133,7 @@ ext_modules = [Extension("tesserocr",
                          language="c++")]
 
 
-setup(name='tesserocr',
+setup(name='mbtesserocr',
       version=find_version('tesserocr.pyx'),
       description='A simple, Pillow-friendly, Python wrapper around tesseract-ocr API using Cython',
       long_description=read('README.rst'),
